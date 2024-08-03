@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>NewDino's Log</title>
+  <link ref="icon" href="../../newdino's_log.svg" type="image/svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      background-color: aliceblue;
+    }
+    #page {
+      width: 97%;
+      max-width: 1280px;
+    }
+    #bar {
+      border-radius: 50px;
+      background-color: white;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    #logo_text {
+      font: 1.2rem "Fira Sans", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="page">
+    <div id="bar">
+      <div style="width: 15px;"></div>
+      <a href="/index.html">
+        <img id="logo" src="../../newdino's_log.svg" width="50" height="50">
+      </a>
+      <div style="width: 10px;"></div>
+      <div id="logo_text">NewDino's Log</div>
+    </div>
+    <div>
+      <div id="container">
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+      <script>
+        let converter = new showdown.Converter();
+        let container = document.getElementById("container")
+        fetch("content.md")
+          .then((response) => response.text())
+          .then((text) => {
+            html = converter.makeHtml(text)
+            container.innerHTML = html
+          })
+      </script>
+    </div>
+  </div>
+</body>
+</html>
